@@ -16,7 +16,7 @@ const CreatePost = () =>{
     })
 
     //lay gia tri
-    const initialValues = {
+    const initialValues = { 
         title: "",
         postText: "",
         userName: "",

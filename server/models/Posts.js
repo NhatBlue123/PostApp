@@ -1,3 +1,5 @@
+const { on } = require("nodemon");
+
 module.exports = (sequelize,DataTypes) => {
     //Tao table posts
     const Posts = sequelize.define("Posts",{
@@ -22,5 +24,11 @@ module.exports = (sequelize,DataTypes) => {
             allowNull: false,
         }
     });
+    Posts.associate = (models) => {
+        Posts.hasMany(models.Comments, {
+            //khi xoa bai dang thi xoa luon comment
+            onDelete: "cascade",
+        });
+    };
     return Posts;
 };

@@ -8,7 +8,7 @@ const Post = () =>{
         axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
         })
-    });
+    },[id]);
 
     return(
         <div className="postPage">
@@ -29,6 +29,6 @@ const Post = () =>{
                 Comment Section
             </div>
         </div>
-    )
+    );
 }
 export default Post;
