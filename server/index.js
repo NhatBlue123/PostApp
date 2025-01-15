@@ -13,6 +13,10 @@ app.use("/posts", postRoutes);
 const commentRoutes = require('./routes/Comments');
 app.use("/comments", commentRoutes);
 
+//user routes
+const userRoutes = require('./routes/Users');
+app.use("/auth", userRoutes);
+
 //sync database
 db.sequelize.sync().then(() => {
     app.listen(3001,() => {
