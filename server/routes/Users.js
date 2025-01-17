@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Users } = require('../models');
 const bcrypt = require('bcrypt');
-
+const {sign} = require('jsonwebtoken');
 router.post('/', async (req, res) => {
     const { userName, password } = req.body;
     bcrypt.hash(password, 10).then((hash) => {
@@ -27,7 +27,10 @@ router.post('/login', async (req, res) => {
         if (!match) {
             return res.json({ error: "Wrong Username and Password Combination" });
         }
-        res.json("You logged in!");
+        // tao token
+        const accessToken = sign({ userName: user.userName, id: user.id}, "important");
+        // tra ve token
+        res.json(accessToken);
     });
 
 });

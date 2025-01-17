@@ -6,12 +6,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const onChangeUserName = (event) => {
-    console.log(event.target.value);
     setUserName(event.target.value);
   }
 
   const onChangePassword = (event) => {
-    console.log(event.target.value);
     setPassword(event.target.value);
   }
 
@@ -20,7 +18,13 @@ const Login = () => {
       userName: userName,
       password: password,
     }).then((response) => {
-      console.log(response.data);
+      if (response.data.error) {
+        alert(response.data.error);
+      }
+      else {
+        sessionStorage.setItem("accessToken", response.data);
+        alert("Login Success");
+      }
     })
   }
   return (
