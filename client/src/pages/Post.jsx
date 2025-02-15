@@ -17,10 +17,19 @@ const Post = () => {
     }, [newComment]);
 
     const addComment = () => {
-        axios.post("http://localhost:3001/comments", { commentBody: newComment, PostId: id }).then((response) => {
+        axios.post("http://localhost:3001/comments", { commentBody: newComment, PostId: id },{
+            headers: {
+                accessToken: sessionStorage.getItem("accessToken"),
+            },
+        }).then((response) => {
+            if(response.data.error){
+             alert("You need to log in to make a comment");
+            }
+            else{
             const commentToAdd = { commentBody: newComment }
             setComments([...comments, commentToAdd]);
             document.getElementById('inputC').value = ""; // xoa gia tri trong input
+            }
         })
     }
 

@@ -20,7 +20,6 @@ const Registration = () => {
     };
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/auth", data).then((response) => {
-            console.log(response.data);
             navigate("/login");
         })
     };
