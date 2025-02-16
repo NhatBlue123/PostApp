@@ -1,12 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
-  let history = useHistory();
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:3001/posts").then((response) => {
       setListOfPosts(response.data);
@@ -21,7 +20,7 @@ function Home() {
             key={key}
             className="post"
             onClick={() => {
-              history.push(`/post/${value.id}`);
+              navigate(`/post/${value.id}`);
             }}
           >
             <div className="title"> {value.title} </div>

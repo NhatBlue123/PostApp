@@ -1,36 +1,44 @@
-import React, { useState } from "react";
-import axios from "axios";
+import axios from 'axios';
+import React, { useState } from 'react'
+const Login = () => {
 
-function Login() {
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const onChangeUserName = (event) => {
+    console.log(event.target.value);
+    setUserName(event.target.value);
+  }
+
+  const onChangePassword = (event) => {
+    console.log(event.target.value);
+    setPassword(event.target.value);
+  }
+
   const login = () => {
-    const data = { username: username, password: password };
-    axios.post("http://localhost:3001/auth/login", data).then((response) => {
+    axios.post("http://localhost:3001/auth/login", {
+      userName: userName,
+      password: password,
+    }).then((response) => {
       console.log(response.data);
-    });
-  };
+    })
+  }
   return (
     <div className="loginContainer">
       <label>Username:</label>
       <input
         type="text"
-        onChange={(event) => {
-          setUsername(event.target.value);
-        }}
+        onChange={onChangeUserName}
       />
       <label>Password:</label>
       <input
         type="password"
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
+        onChange={onChangePassword}
       />
 
       <button onClick={login}> Login </button>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login
