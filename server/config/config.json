@@ -2,8 +2,8 @@
   "development": {
     "username": "root",
     "password": "nhat",
-    "database": "TutorialDB",
-    "host": "localhost",
+    "database": "tutorialdb",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {

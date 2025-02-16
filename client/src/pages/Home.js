@@ -9,6 +9,7 @@ function Home() {
   useEffect(() => {
     axios.get("http://localhost:3001/posts").then((response) => {
       setListOfPosts(response.data);
+      console.log(response.data);
     });
   }, []);
 

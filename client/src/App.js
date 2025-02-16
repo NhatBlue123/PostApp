@@ -1,3 +1,4 @@
+import "./App.css";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost";
 import Post from "./pages/Post";
